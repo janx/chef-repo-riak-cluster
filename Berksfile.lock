@@ -1,0 +1,46 @@
+{
+  "sources": {
+    "riak": {
+      "locked_version": "2.4.1"
+    },
+    "apt": {
+      "locked_version": "2.3.4"
+    },
+    "yum": {
+      "locked_version": "3.0.2"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "erlang": {
+      "locked_version": "1.4.0"
+    },
+    "yum-epel": {
+      "locked_version": "0.2.0"
+    },
+    "yum-erlang_solutions": {
+      "locked_version": "0.1.4"
+    },
+    "git": {
+      "locked_version": "2.9.0"
+    },
+    "dmg": {
+      "locked_version": "2.1.2"
+    },
+    "windows": {
+      "locked_version": "1.12.4"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "powershell": {
+      "locked_version": "1.1.2"
+    },
+    "runit": {
+      "locked_version": "1.5.3"
+    },
+    "ulimit": {
+      "locked_version": "0.3.2"
+    }
+  }
+}
