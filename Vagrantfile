@@ -89,7 +89,7 @@ Vagrant.configure("2") do |config|
     chef.provisioning_path = "/etc/chef"
 
     chef.node_name = "vagrant-node1"
-    chef.add_role = "vagrant-riak"
+    chef.add_role "vagrant-riak"
     chef.json.merge!(:riak => {:erlang => {:node_name => "riak@#{ip}"}})
   end
 end
