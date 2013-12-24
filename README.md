@@ -1,7 +1,7 @@
 Getting Started
 ---------------
 
-1. Setup your workstation with .chef credentials.
+1. Copy validation credentials into .chef of this directory.
 
 2. Create a role for riak node:
 
@@ -43,3 +43,7 @@ Use the json below for the new created role:
   }
 }
 ```
+
+3. Modify ip and chef configurations in Vagrantfile to use your ip, organization and validation client.
+
+4. `vagrant up`
