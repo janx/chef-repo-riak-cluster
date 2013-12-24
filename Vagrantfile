@@ -5,6 +5,8 @@
 # for downloads and installation instructions, and see http://docs.vagrantup.com/v2/
 # for more information and configuring and using Vagrant.
 
+ip = "33.33.33.11"
+
 Vagrant.configure("2") do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
@@ -31,7 +33,7 @@ Vagrant.configure("2") do |config|
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
   # config.vm.network :private_network, ip: "192.168.33.10"
-  config.vm.network :private_network, ip: "33.33.33.11"
+  config.vm.network :private_network, ip: ip
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -87,31 +89,7 @@ Vagrant.configure("2") do |config|
     chef.provisioning_path = "/etc/chef"
 
     chef.node_name = "vagrant-node1"
-    chef.run_list = [
-      "recipe[riak]"
-    ]
-
-    chef.json.merge!(
-      riak: {
-        install_method: 'package',
-        package: {
-          version: {
-            major: 1,
-            minor: 2,
-            incremental: 1
-          }
-        },
-        core: {
-          cluster_name: 'vagrant',
-          http: [["0.0.0.0", 8098]]
-        },
-        kv: {
-          pb_ip: "0.0.0.0"
-        },
-        erlang: {
-          node_name: "riak@33.33.33.11"
-        }
-      }
-    )
+    chef.add_role = "vagrant-riak"
+    chef.json.merge!(:riak => {:erlang => {:node_name => "riak@#{ip}"}})
   end
 end
