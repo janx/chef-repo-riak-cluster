@@ -12,36 +12,47 @@ Getting Started
   Use the json below for the new created role:
 
   ```json
-  {
-    "name": "vagrant-riak",
-    "default_attributes": {
-    },
-    "json_class": "Chef::Role",
-    "run_list": [
-      "recipe[riak]"
-    ],
-    "description": "Role for vagrant riak server",
-    "chef_type": "role",
-    "override_attributes": {
-      "riak": {
-        "install_method": "package",
-        "package": {
-          "version": {
-            "major": 1,
-            "minor": 2,
-            "incremental": 1
+    {
+      "name": "vagrant-riak",
+      "description": "Role for vagrant riak server",
+      "json_class": "Chef::Role",
+      "default_attributes": {
+      },
+      "override_attributes": {
+        "riak": {
+          "install_method": "package",
+          "package": {
+            "version": {
+              "major": 1,
+              "minor": 2,
+              "incremental": 1
+            }
+          },
+          "config": {
+            "riak_core": {
+              "http": [
+                [
+                  "__tuple",
+                  "__string_0.0.0.0",
+                  8098
+                ]
+              ]
+            },
+            "riak_api": {
+              "pb_ip": "__string_0.0.0.0",
+              "pb_port": 8087
+            }
           }
-        },
-        "core": {
-          "cluster_name": "vagrant",
-          "http": [["0.0.0.0", 8098]]
-        },
-        "kv": {
-          "pb_ip": "0.0.0.0"
         }
+      },
+      "chef_type": "role",
+      "run_list": [
+        "recipe[riak]"
+      ],
+      "env_run_lists": {
       }
     }
-  }
+
   ```
 
 3. Modify ip and chef configurations in Vagrantfile to use your ip, organization and validation client.
